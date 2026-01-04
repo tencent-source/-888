@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Weeb Stream Haven ✨</title>
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --accent-color: #e94560;
+            --text-color: #ffffff;
+            --secondary-text: #a0a0a0;
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --neon-purple: #8a2be2;
+            --border-glow: 0 0 15px rgba(233, 69, 96, 0.5);
+        }
+
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(233, 69, 96, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== ANIMATED STARS BACKGROUND ===== */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== HEADER SECTION ===== */
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(233, 69, 96, 0.5); }
+            to { text-shadow: 0 0 30px rgba(138, 43, 226, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-text);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .kawaii-emoji {
+            font-size: 2rem;
+            animation: bounce 1s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        /* ===== CARDS ===== */
+        .stream-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .stream-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
+            border-color: var(--accent-color);
+            animation: cardPulse 1s ease-in-out;
+        }
+
+        @keyframes cardPulse {
+            0% { transform: translateY(-10px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+            100% { transform: translateY(-10px) scale(1); }
+        }
+
+        /* ===== DECORATIVE ELEMENTS ===== */
+        .card-decoration {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 3rem;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .card-number {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .site-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .site-description {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .visit-btn {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+            animation: buttonGlow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes buttonGlow {
+            from { box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4); }
+            to { box-shadow: 0 4px 25px rgba(138, 43, 226, 0.6); }
+        }
+
+        .visit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .visit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        .disclaimer {
+            color: var(--secondary-text);
+            font-size: 0.8rem;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-link {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--neon-pink);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+        }
+
+        /* ===== SPECIAL EFFECTS ===== */
+        .glow-text {
+            text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+            animation: glowPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from { text-shadow: 0 0 5px var(--accent-color); }
+            to { text-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <header>
+        <h1 class="header-title floating">🎬 Free Movie Paradise 🎬</h1>
+        <p class="subtitle">Your ultimate guide to free movie streaming! �</p>
+        <div class="kawaii-emoji">🌸</div>
+        <div class="kawaii-emoji">🍥</div>
+        <div class="kawaii-emoji">🍡</div>
+        <div class="kawaii-emoji">🎀</div>
+        <div class="kawaii-emoji">⭐</div>
+    </header>
+
+    <main>
+        <div class="grid-container">
+            <!-- Site 1 -->
+            <div class="stream-card">
+                <span class="card-decoration">🎬</span>
+                <span class="card-number">#01</span>
+                <h2 class="site-name">123Movies</h2>
+                <p class="site-description glow-text">The legendary free movie streaming site with massive library. HD quality available. Regularly updated with latest releases!</p>
+                <button class="visit-btn" onclick="window.open('https://123moviesfree.net', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 2 -->
+            <div class="stream-card">
+                <span class="card-decoration">📺</span>
+                <span class="card-number">#02</span>
+                <h2 class="site-name">FMovies</h2>
+                <p class="site-description">Huge collection of movies and TV shows. Multiple server options for smooth streaming. Fast updates for new releases!</p>
+                <button class="visit-btn" onclick="window.open('https://fmovies.to', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 3 -->
+            <div class="stream-card">
+                <span class="card-decoration">⭐</span>
+                <span class="card-number">#03</span>
+                <h2 class="site-name">Putlocker</h2>
+                <p class="site-description">Classic movie streaming platform with extensive library. Clean interface and high-quality streams. No registration required!</p>
+                <button class="visit-btn" onclick="window.open('https://putlockers.fm', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 4 -->
+            <div class="stream-card">
+                <span class="card-decoration">🍿</span>
+                <span class="card-number">#04</span>
+                <h2 class="site-name">SolarMovie</h2>
+                <p class="site-description">Popular movie streaming site with latest releases. Multiple quality options available. Fast loading times and minimal ads!</p>
+                <button class="visit-btn" onclick="window.open('https://solarmovie.pe', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 5 -->
+            <div class="stream-card">
+                <span class="card-decoration">🎥</span>
+                <span class="card-number">#05</span>
+                <h2 class="site-name">YesMovies</h2>
+                <p class="site-description">High-quality movie streaming with extensive catalog. Regular updates for new releases. Multiple server mirrors available!</p>
+                <button class="visit-btn" onclick="window.open('https://yesmovies.ag', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 6 -->
+            <div class="stream-card">
+                <span class="card-decoration">🎞️</span>
+                <span class="card-number">#06</span>
+                <h2 class="site-name">Popcornflix</h2>
+                <p class="site-description">Free movie streaming with legal content. Great selection of indie films and classics. No registration needed!</p>
+                <button class="visit-btn" onclick="window.open('https://popcornflix.com', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 7 -->
+            <div class="stream-card">
+                <span class="card-decoration">🎬</span>
+                <span class="card-number">#07</span>
+                <h2 class="site-name">Tubi TV</h2>
+                <p class="site-description">Legal free movie streaming with ads. Growing library of movies and TV shows. Great for discovering hidden gems!</p>
+                <button class="visit-btn" onclick="window.open('https://tubitv.com', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 8 -->
+            <div class="stream-card">
+                <span class="card-decoration">📺</span>
+                <span class="card-number">#08</span>
+                <h2 class="site-name">Crackle</h2>
+                <p class="site-description">Sony's free streaming service with movies and TV shows. Legal platform with ad-supported content. Regularly updated library!</p>
+                <button class="visit-btn" onclick="window.open('https://crackle.com', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 9 -->
+            <div class="stream-card">
+                <span class="card-decoration">⭐</span>
+                <span class="card-number">#09</span>
+                <h2 class="site-name">Vudu Movies</h2>
+                <p class="site-description">Free movies with ads from Walmart. High-quality streaming available. Great selection of recent releases and classics!</p>
+                <button class="visit-btn" onclick="window.open('https://vudu.com', '_blank')">Watch Now</button>
+            </div>
+
+            <!-- Site 10 -->
+            <div class="stream-card">
+                <span class="card-decoration">🍿</span>
+                <span class="card-number">#10</span>
+                <h2 class="site-name">Plex Free Movies</h2>
+                <p class="site-description">Free movie streaming with legal content. Curated selection of films. Great user interface and quality streams!</p>
+                <button class="visit-btn" onclick="window.open('https://plex.tv', '_blank')">Watch Now</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="disclaimer">
+            ⚠️ DISCLAIMER: This website is for informational purposes only. We do not host or distribute any copyrighted content. 
+            Please support the official releases and consider using legal streaming services when possible. 
+            Streaming from unofficial sources may violate copyright laws in your country.
+        </div>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Contact Us</a>
+        </div>
+        <p style="color: var(--secondary-text); margin-top: 1rem; font-size: 0.8rem;">
+            🍿 Stay kawaii, watch movies, spread joy! 🍿
+        </p>
+    </footer>
+
+    <script>
+        // Create animated stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random positioning
+                const size = Math.random() * 2;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Add floating animation to cards on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.stream-card');
+            const scrollPosition = window.scrollY;
+            
+            cards.forEach((card, index) => {
+                if (scrollPosition > 100) {
+                    card.style.transform = `translateY(${Math.sin(scrollPosition / 100 + index) * 5}px)`;
+                }
+            });
+        });
+
+        // Initialize stars
+        createStars();
+
+        // Add click animation to buttons
+        document.querySelectorAll('.visit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# GitLab CI/CD configuration for GitLab Pages
+# This file will be used to automatically deploy your site to GitLab Pages
+
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+    # Copy all files to the public directory (required for GitLab Pages)
+    - apk add --no-cache rsync
+    - rsync -av --delete . public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main  # Deploy only when pushing to main branch

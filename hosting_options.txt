@@ -1,0 +1,40 @@
+FREE ANONYMOUS HOSTING OPTIONS (Privacy-Focused):
+
+1. **GitHub Pages** (Most Recommended)
+   - Free static site hosting
+   - Anonymous usage possible
+   - Custom domain support
+   - Built-in CDN
+   - URL: yourusername.github.io/repository-name
+
+2. **Netlify** 
+   - Free tier with custom domains
+   - Automatic deployments
+   - Formspree integration
+   - URL: your-site.netlify.app
+
+3. **Vercel**
+   - Free static site hosting
+   - Custom domains
+   - Global CDN
+   - URL: your-site.vercel.app
+
+4. **GitLab Pages**
+   - Free static hosting
+   - Anonymous usage
+   - Custom domains
+   - URL: yourusername.gitlab.io/project
+
+5. **Cloudflare Pages**
+   - Free tier available
+   - Built-in DDoS protection
+   - Custom domains
+   - URL: your-site.pages.dev
+
+URL OBSCURING METHODS:
+- Use URL shorteners (bit.ly, tinyurl.com)
+- Custom domain forwarding
+- Subdomain masking services
+- CDN URL rewriting
+
+IMPORTANT: Always include proper legal disclaimer and consider the copyright implications of hosting streaming site directories.

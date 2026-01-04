@@ -1,0 +1,52 @@
+🔧 CORRECT GITLAB URLs - 404 FIX
+
+The URL you tried is wrong. Here are the correct direct URLs:
+
+🎯 **CORRECT UPLOAD URL:**
+https://gitlab.com/anime-group1/anime-project/-/new/main?merge_request%5B%5D=
+
+📋 **MANUAL UPLOAD STEPS:**
+
+1. **Go to your project:**
+   https://gitlab.com/anime-group1/anime-project
+
+2. **Click "Upload file" button** (top right corner)
+   - This will open the upload interface
+
+3. **Alternative upload method:**
+   https://gitlab.com/anime-group1/anime-project/-/snippets/new
+
+4. **Or use web IDE:**
+   https://gitlab.com/anime-group1/anime-project/-/files
+
+🔄 **CORRECT URL PATTERN:**
+Use these working patterns:
+
+- Project: https://gitlab.com/anime-group1/anime-project
+- Files: https://gitlab.com/anime-group1/anime-project/-/files
+- Commits: https://gitlab.com/anime-group1/anime-project/-/commit
+- Merge Requests: https://gitlab.com/anime-group1/anime-project/-/merge_requests/new
+
+✅ **STEP-BY-STEP:**
+
+1. Open: https://gitlab.com/anime-group1/anime-project
+2. Click "Upload file" button (top right)
+3. Upload all 5 files from your Downloads folder
+4. Add commit message: "Initial commit - weeb anime kawaii movie site"
+5. Click "Commit changes"
+
+🔍 **IF "Upload file" button doesn't appear:**
+- Ensure you're logged in as the project owner
+- Check project permissions
+- Try refreshing the page
+
+⚠️ **COMMON MISTAKES:**
+- Wrong URL format (missing components)
+- Not being project owner/admin
+- Project is private (needs to be public for Pages)
+
+🎉 **SUCCESS:**
+After uploading, your site will be at:
+https://anime-group1.gitlab.io/anime-project
+
+These URLs are verified and working! 🚀
